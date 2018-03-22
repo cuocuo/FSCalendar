@@ -275,6 +275,16 @@ IB_DESIGNABLE
 @property (weak, nonatomic) IBOutlet id<FSCalendarDataSource> dataSource;
 
 /**
+ * 
+ */
+@property (assign, nonatomic) BOOL topLineHidden;
+
+/**
+ * 
+ */
+@property (assign, nonatomic) BOOL bottomLineHidden;
+
+/**
  * A special mark will be put on 'today' of the calendar.
  */
 @property (nullable, strong, nonatomic) NSDate *today;
