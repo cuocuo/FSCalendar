@@ -338,7 +338,7 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
         self.calendarHeaderView.frame = CGRectMake(0, 0, self.fs_width, headerHeight);
         self.calendarWeekdayView.frame = CGRectMake(_collectionViewLayout.sectionInsets.left, self.calendarHeaderView.fs_bottom, self.contentView.fs_width - (_collectionViewLayout.sectionInsets.left + _collectionViewLayout.sectionInsets.right), weekdayHeight);
         _prePageButton.frame = CGRectMake((self.fs_width - 144)/2, headerHeight*0.1, 24, headerHeight*0.9);
-        _nextPageButton.frame = CGRectMake(self.fs_width - (self.fs_width - 144)/2 + 24, headerHeight*0.1, 24, headerHeight*0.9);
+        _nextPageButton.frame = CGRectMake(self.fs_width - (self.fs_width - 144)/2 - 24, headerHeight*0.1, 24, headerHeight*0.9);
         _deliver.frame = CGRectMake(self.calendarHeaderView.fs_left, self.calendarHeaderView.fs_top, self.calendarHeaderView.fs_width, headerHeight+weekdayHeight);
         _deliver.hidden = self.calendarHeaderView.hidden;
         if (!self.floatingMode) {
@@ -723,18 +723,18 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 
 - (void)prePage {
     if (_scrollDirection == FSCalendarScrollDirectionVertical) {
-        [_collectionView setContentOffset:CGPointMake(-_collectionView.fs_height, 0) animated:YES];
-    } else {
         [_collectionView setContentOffset:CGPointMake(0, -_collectionView.fs_width) animated:YES];
+    } else {
+        [_collectionView setContentOffset:CGPointMake(-_collectionView.fs_height, 0) animated:YES];
     }
     
 }
 
 - (void)nextPage {
     if (_scrollDirection == FSCalendarScrollDirectionVertical) {
-        [_collectionView setContentOffset:CGPointMake(_collectionView.fs_height, 0) animated:YES];
-    } else {
         [_collectionView setContentOffset:CGPointMake(0, _collectionView.fs_width) animated:YES];
+    } else {
+        [_collectionView setContentOffset:CGPointMake(_collectionView.fs_height, 0) animated:YES];
     }
 }
 
