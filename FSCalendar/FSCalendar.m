@@ -713,6 +713,15 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 }
 
 #pragma mark - Properties
+- (void)setTopLineHidden:(BOOL)isHidden {
+    _topLineHidden = isHidden;
+    _topBorder.hidden = isHidden;
+}
+
+- (void)setBottomLineHidden:(BOOL)isHidden {
+    _bottomLineHidden = isHidden;
+    _bottomBorder.hidden = isHidden;
+}
 
 - (void)setScrollDirection:(FSCalendarScrollDirection)scrollDirection
 {
