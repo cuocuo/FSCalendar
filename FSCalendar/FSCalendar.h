@@ -292,7 +292,12 @@ IB_DESIGNABLE
 /**
  *
  */
-@property (assign, nonatomic) UIEdgeInsets weekdayInsets;
+@property (strong, nonatomic) UIButton *prePageButton;
+
+/**
+ *
+ */
+@property (strong, nonatomic) UIButton *nextPageButton;
 
 /**
  * A special mark will be put on 'today' of the calendar.
