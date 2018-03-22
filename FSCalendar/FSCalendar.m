@@ -723,21 +723,17 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 
 - (void)prePage {
     NSInteger scrollOffset = [self.calculator indexPathForDate:self.currentPage atMonthPosition:FSCalendarMonthPositionCurrent].section;
-    if (_scrollDirection == FSCalendarScrollDirectionVertical) {
-        [_collectionView setContentOffset:CGPointMake(0, -_collectionView.fs_height*(scrollOffset + 1)) animated:YES];
-    } else {
-        [_collectionView setContentOffset:CGPointMake(-_collectionView.fs_width*(scrollOffset + 1), 0) animated:YES];
-    }
+    if (scrollOffset == 0) return;
+    NSDate *date = [self.calculator pageForSection:scrollOffset - 1];
+    [self setCurrentPage:date animated:YES];
     
 }
 
 - (void)nextPage {
     NSInteger scrollOffset = [self.calculator indexPathForDate:self.currentPage atMonthPosition:FSCalendarMonthPositionCurrent].section;
-    if (_scrollDirection == FSCalendarScrollDirectionVertical) {
-        [_collectionView setContentOffset:CGPointMake(0, _collectionView.fs_height*(scrollOffset + 1)) animated:YES];
-    } else {
-        [_collectionView setContentOffset:CGPointMake(_collectionView.fs_width*(scrollOffset + 1), 0) animated:YES];
-    }
+    if ((scrollOffset + 1) == [self.calculator numberOfSections]) return;
+    NSDate *date = [self.calculator pageForSection:scrollOffset + 1];
+    [self setCurrentPage:date animated:YES];
 }
 
 #pragma mark - Properties
