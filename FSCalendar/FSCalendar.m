@@ -722,19 +722,21 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 }
 
 - (void)prePage {
+    NSInteger scrollOffset = [self.calculator indexPathForDate:self.currentPage atMonthPosition:FSCalendarMonthPositionCurrent].section;
     if (_scrollDirection == FSCalendarScrollDirectionVertical) {
-        [_collectionView setContentOffset:CGPointMake(0, -_collectionView.fs_width) animated:YES];
+        [_collectionView setContentOffset:CGPointMake(0, -_collectionView.fs_width*(scrollOffset + 1)) animated:YES];
     } else {
-        [_collectionView setContentOffset:CGPointMake(-_collectionView.fs_height, 0) animated:YES];
+        [_collectionView setContentOffset:CGPointMake(-_collectionView.fs_height*(scrollOffset + 1), 0) animated:YES];
     }
     
 }
 
 - (void)nextPage {
+    NSInteger scrollOffset = [self.calculator indexPathForDate:self.currentPage atMonthPosition:FSCalendarMonthPositionCurrent].section;
     if (_scrollDirection == FSCalendarScrollDirectionVertical) {
-        [_collectionView setContentOffset:CGPointMake(0, _collectionView.fs_width) animated:YES];
+        [_collectionView setContentOffset:CGPointMake(0, _collectionView.fs_width*(scrollOffset + 1)) animated:YES];
     } else {
-        [_collectionView setContentOffset:CGPointMake(_collectionView.fs_height, 0) animated:YES];
+        [_collectionView setContentOffset:CGPointMake(_collectionView.fs_height*(scrollOffset + 1), 0) animated:YES];
     }
 }
 
