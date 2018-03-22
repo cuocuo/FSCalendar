@@ -723,6 +723,16 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     _bottomBorder.hidden = isHidden;
 }
 
+- (void)setSectionInsets:(UIEdgeInsets)sectionInsets {
+    _sectionInsets = sectionInsets;
+    _collectionViewLayout.sectionInsets = sectionInsets;
+    if (self.hasValidateVisibleLayout) {
+        [_collectionView reloadData];
+    }
+    _needsAdjustingViewFrame = YES;
+    [self setNeedsLayout];
+}
+
 - (void)setScrollDirection:(FSCalendarScrollDirection)scrollDirection
 {
     if (_scrollDirection != scrollDirection) {

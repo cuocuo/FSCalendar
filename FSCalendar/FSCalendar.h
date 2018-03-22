@@ -285,6 +285,11 @@ IB_DESIGNABLE
 @property (assign, nonatomic) BOOL bottomLineHidden;
 
 /**
+ *
+ */
+@property (assign, nonatomic) UIEdgeInsets sectionInsets;
+
+/**
  * A special mark will be put on 'today' of the calendar.
  */
 @property (nullable, strong, nonatomic) NSDate *today;
