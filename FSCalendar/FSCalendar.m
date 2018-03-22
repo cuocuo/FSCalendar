@@ -733,6 +733,16 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     [self setNeedsLayout];
 }
 
+- (void)setWeekdayInsets:(UIEdgeInsets)sectionInsets {
+    _weekdayInsets = sectionInsets;
+    _calendarHeaderView.collectionViewLayout.sectionInset = sectionInsets;
+    if (self.hasValidateVisibleLayout) {
+        [_calendarHeaderView reloadData];
+    }
+    _needsAdjustingViewFrame = YES;
+    [self setNeedsLayout];
+}
+
 - (void)setScrollDirection:(FSCalendarScrollDirection)scrollDirection
 {
     if (_scrollDirection != scrollDirection) {
