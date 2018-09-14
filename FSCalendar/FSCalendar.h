@@ -21,6 +21,7 @@
 #import "FSCalendarCell.h"
 #import "FSCalendarWeekdayView.h"
 #import "FSCalendarHeaderView.h"
+@class FSCalendarCalculator;
 
 //! Project version number for FSCalendar.
 FOUNDATION_EXPORT double FSCalendarVersionNumber;
@@ -62,7 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol FSCalendarDataSource <NSObject>
 
 @optional
-
+@property (strong, nonatomic) FSCalendarCalculator       *calculator;
 /**
  * Asks the dataSource for a title for the specific date as a replacement of the day text
  */
@@ -463,7 +464,7 @@ IB_DESIGNABLE
  The dates representing the selected dates. (read-only)
  */
 @property (readonly, nonatomic) NSArray<NSDate *> *selectedDates;
-
+@property (strong, nonatomic, readonly) FSCalendarCalculator       *calculator;
 /**
  Reload the dates and appearance of the calendar.
  */
