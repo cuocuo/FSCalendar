@@ -757,6 +757,16 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     [self setNeedsLayout];
 }
 
+- (void)setLineSpacing:(CGFloat)lineSpacing {
+    _lineSpacing = lineSpacing;
+    _collectionViewLayout.lineSpacing = lineSpacing;
+    if (self.hasValidateVisibleLayout) {
+        [_collectionView reloadData];
+    }
+    _needsAdjustingViewFrame = YES;
+    [self setNeedsLayout];
+}
+
 - (void)setScrollDirection:(FSCalendarScrollDirection)scrollDirection
 {
     if (_scrollDirection != scrollDirection) {
