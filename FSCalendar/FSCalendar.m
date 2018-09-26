@@ -344,7 +344,7 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
         if (!self.floatingMode) {
             switch (self.transitionCoordinator.representingScope) {
                 case FSCalendarScopeMonth: {
-                    CGFloat contentHeight = rowHeight*6 + padding*2;
+                    CGFloat contentHeight = (rowHeight+self.lineSpacing)*6 + padding*2;
                     CGFloat currentHeight = rowHeight*[self.calculator numberOfRowsInMonth:self.currentPage] + padding*2;
                     _daysContainer.frame = CGRectMake(0, headerHeight+weekdayHeight, self.fs_width, currentHeight);
                     _collectionView.frame = CGRectMake(0, 0, _daysContainer.fs_width, contentHeight);
